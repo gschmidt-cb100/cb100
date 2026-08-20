@@ -1,0 +1,31 @@
+# Biblioteca FIUBA - registro de prestamos
+# formato: fechaRetiro;padron;socio;isbn;titulo;fechaDevolucion
+# la fecha de devolucion vacia significa "todavia no lo devolvio"
+
+2026-03-02;41234;Ana Gomez;9789871234567;Estructuras de Datos;2026-03-16
+2026-03-05;39876;Bruno Ferrari;9780262033848;Introduction to Algorithms;2026-03-30
+2026-03-09;42001;Carla Nunez;9789871234567;Estructuras de Datos;2026-03-20
+2026-03-11;40555;Diego Ruiz;9788478290499;El Lenguaje de Programacion C;
+2026-03-15;41234;Ana Gomez;9780132350884;Clean Code;2026-04-02
+
+2026-03-18;43310;Elena Sosa;9789875703216;Analisis Matematico I;2026-03-31
+2026-03-22;39876;Bruno Ferrari;9789871234567;Estructuras de Datos;2026-04-06
+2026-03-25;42001;Carla Nunez;9788441532106;Java, como programar;2026-04-08
+2026-04-01;41234;Ana Gomez;9789871234567;Estructuras de Datos;
+2026-04-03;40555;Diego Ruiz;9780262033848;Introduction to Algorithms;2026-04-17
+
+# --- abril ---
+2026-04-06;43310;Elena Sosa;9780132350884;Clean Code;2026-04-30
+2026-04-08;39876;Bruno Ferrari;9789875703216;Analisis Matematico I;
+2026-04-10;42001;Carla Nunez;9780262033848;Introduction to Algorithms;2026-04-21
+2026-04-13;41234;Ana Gomez;9788441532106;Java, como programar;2026-04-27
+2026-04-16;40555;Diego Ruiz;9789871234567;Estructuras de Datos;2026-05-02
+2026-04-20;43310;Elena Sosa;9788478290499;El Lenguaje de Programacion C;
+2026-04-22;39876;Bruno Ferrari;9780132350884;Clean Code;2026-05-01
+2026-04-27;42001;Carla Nunez;9789871234567;Estructuras de Datos;
+
+# --- lineas con errores: el programa las descarta e informa ---
+2026-04-30;41234;Ana Gomez;9789871234567
+2026-13-02;39876;Bruno Ferrari;9780132350884;Clean Code;
+2026-04-18;CUARENTA;Carla Nunez;9788441532106;Java, como programar;2026-04-25
+2026-04-15;43310;Elena Sosa;9789875703216;Analisis Matematico I;2026-04-01
