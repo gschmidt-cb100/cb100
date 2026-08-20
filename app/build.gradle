@@ -1,0 +1,47 @@
+// ============================================================
+//  build.gradle  —  el "instructivo de construcción" del proyecto
+//  Gradle lee este archivo para saber cómo compilar, testear y
+//  ejecutar nuestro código. Está escrito en Groovy.
+// ============================================================
+
+plugins {
+    id 'application'   // nos deja ejecutar el programa con: gradle run
+    id 'java'          // soporte para compilar y testear Java
+}
+
+// --- Versión de Java --------------------------------------------------
+// Usamos Java 25 (la versión con la que trabaja la materia).
+// El "toolchain" hace que Gradle use exactamente ese JDK, sin importar
+// qué Java tengas instalado por defecto en tu máquina.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+// --- De dónde bajamos las dependencias --------------------------------
+repositories {
+    mavenCentral()   // el repositorio público de librerías Java
+}
+
+// --- Librerías que usamos ---------------------------------------------
+dependencies {
+    // Librería externa de ejemplo: utilidades de texto (StringUtils, etc.).
+    implementation 'org.apache.commons:commons-lang3:3.17.0'
+
+    // JUnit 5: el framework para escribir pruebas unitarias.
+    testImplementation platform('org.junit:junit-bom:5.11.3')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly    'org.junit.platform:junit-platform-launcher'
+}
+
+// --- Cómo correr los tests --------------------------------------------
+test {
+    useJUnitPlatform()   // decirle a Gradle que use JUnit 5
+    testLogging { events "passed", "skipped", "failed" }
+}
+
+// --- Clase principal (la que tiene el método main) --------------------
+application {
+    mainClass = 'ar.uba.fi.cb100.material.i01_intro.HolaCB100'
+}

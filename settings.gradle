@@ -1,0 +1,16 @@
+// ============================================================
+//  settings.gradle — define QUÉ proyectos componen este build.
+//  Gradle lo lee ANTES que cualquier build.gradle.
+// ============================================================
+
+plugins {
+    // Permite que Gradle descargue solo el JDK que pide el toolchain
+    // (Java 25) si no lo tenés instalado en la máquina.
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
+// Nombre del proyecto raíz.
+rootProject.name = 'cb100'
+
+// Cada "módulo" de Gradle es un subproyecto. Empezamos con 'app'.
+include 'app'
