@@ -36,7 +36,9 @@ public final class FuncionesDeHash {
     /** EXTRACCIÓN: tomar algunos dígitos de la clave (p. ej., 3.º y 4.º). */
     public static int extraccion(int clave) {
         String d = String.valueOf(Math.abs(clave));
-        if (d.length() < 4) return Math.abs(clave);
+        if (d.length() < 4) {
+            return Math.abs(clave);
+        }
         return Integer.parseInt(d.substring(2, 4));  // dígitos 3.º y 4.º
     }
 

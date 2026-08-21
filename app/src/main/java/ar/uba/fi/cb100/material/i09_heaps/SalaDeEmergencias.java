@@ -20,14 +20,18 @@ public class SalaDeEmergencias {
     private long proximoNumero = 0;
 
     public void ingresar(String nombre, int gravedad) {
-        if (gravedad < 1 || gravedad > 5) throw new IllegalArgumentException("gravedad 1..5");
+        if (gravedad < 1 || gravedad > 5) {
+            throw new IllegalArgumentException("gravedad 1..5");
+        }
         espera.offer(new Paciente(nombre, gravedad, proximoNumero++));
     }
 
     /** El próximo a atender (el más grave; a igual gravedad, el que llegó antes). */
     public String atender() {
         Paciente p = espera.poll();
-        if (p == null) throw new IllegalStateException("no hay pacientes");
+        if (p == null) {
+            throw new IllegalStateException("no hay pacientes");
+        }
         return p.nombre();
     }
 

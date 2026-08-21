@@ -80,25 +80,39 @@ public class ArbolAVL<T extends Comparable<T>> {
     private Nodo<T> insertar(Nodo<T> nodo, T valor) {
         if (nodo == null) { cantidad++; return new Nodo<>(valor); }
         int cmp = valor.compareTo(nodo.valor);
-        if (cmp < 0)      nodo.izquierdo = insertar(nodo.izquierdo, valor);
-        else if (cmp > 0) nodo.derecho   = insertar(nodo.derecho, valor);
-        else return nodo;                          // sin duplicados
+        if (cmp < 0) {
+            nodo.izquierdo = insertar(nodo.izquierdo, valor);
+        } else if (cmp > 0) {
+            nodo.derecho   = insertar(nodo.derecho, valor);
+        } else {
+            return nodo;   // sin duplicados
+        }
         return balancear(nodo);                    // al volver, cada nodo se revisa
     }
 
     public void quitar(T valor) { raiz = quitar(raiz, valor); }
 
     private Nodo<T> quitar(Nodo<T> nodo, T valor) {
-        if (nodo == null) return null;
+        if (nodo == null) {
+            return null;
+        }
         int cmp = valor.compareTo(nodo.valor);
-        if (cmp < 0)      nodo.izquierdo = quitar(nodo.izquierdo, valor);
-        else if (cmp > 0) nodo.derecho   = quitar(nodo.derecho, valor);
-        else {
+        if (cmp < 0) {
+            nodo.izquierdo = quitar(nodo.izquierdo, valor);
+        } else if (cmp > 0) {
+            nodo.derecho   = quitar(nodo.derecho, valor);
+        } else {
             cantidad--;
-            if (nodo.izquierdo == null) return nodo.derecho;
-            if (nodo.derecho == null)   return nodo.izquierdo;
+            if (nodo.izquierdo == null) {
+                return nodo.derecho;
+            }
+            if (nodo.derecho == null) {
+                return nodo.izquierdo;
+            }
             Nodo<T> sucesor = nodo.derecho;
-            while (sucesor.izquierdo != null) sucesor = sucesor.izquierdo;
+            while (sucesor.izquierdo != null) {
+                sucesor = sucesor.izquierdo;
+            }
             nodo.valor = sucesor.valor;
             cantidad++;
             nodo.derecho = quitar(nodo.derecho, sucesor.valor);
@@ -110,7 +124,9 @@ public class ArbolAVL<T extends Comparable<T>> {
         Nodo<T> actual = raiz;
         while (actual != null) {
             int cmp = valor.compareTo(actual.valor);
-            if (cmp == 0) return true;
+            if (cmp == 0) {
+                return true;
+            }
             actual = (cmp < 0) ? actual.izquierdo : actual.derecho;
         }
         return false;
@@ -123,7 +139,9 @@ public class ArbolAVL<T extends Comparable<T>> {
     }
 
     private void enOrden(Nodo<T> nodo, List<T> r) {
-        if (nodo == null) return;
+        if (nodo == null) {
+            return;
+        }
         enOrden(nodo.izquierdo, r);
         r.add(nodo.valor);
         enOrden(nodo.derecho, r);
@@ -136,7 +154,9 @@ public class ArbolAVL<T extends Comparable<T>> {
     public static void main(String[] args) {
         // El caso que rompe al ABB: insertar ORDENADO.
         ArbolAVL<Integer> avl = new ArbolAVL<>();
-        for (int v = 1; v <= 15; v++) avl.insertar(v);
+        for (int v = 1; v <= 15; v++) {
+            avl.insertar(v);
+        }
         System.out.println("altura con 15 ordenados: " + avl.altura());  // 3 (¡no 14!)
         System.out.println("raíz: " + avl.raiz());                        // 8
         System.out.println(avl.enOrden());   // 1..15 ordenados

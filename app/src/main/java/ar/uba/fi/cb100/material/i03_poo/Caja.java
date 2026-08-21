@@ -29,7 +29,9 @@ public class Caja<T> {
     public static <E extends Comparable<E>> E maximo(E[] arreglo) {
         E m = arreglo[0];
         for (E e : arreglo) {
-            if (e.compareTo(m) > 0) m = e;
+            if (e.compareTo(m) > 0) {
+                m = e;
+            }
         }
         return m;
     }

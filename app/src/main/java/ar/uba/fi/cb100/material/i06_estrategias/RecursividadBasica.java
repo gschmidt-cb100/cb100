@@ -9,20 +9,28 @@ public class RecursividadBasica {
 
     /** n! = n · (n−1)!  ·  T(n) = T(n−1) + O(1) → O(n). Caso base: 0! = 1. */
     public static long factorial(int n) {
-        if (n < 0) throw new IllegalArgumentException("n negativo");
-        if (n <= 1) return 1;            // caso base
+        if (n < 0) {
+            throw new IllegalArgumentException("n negativo");
+        }
+        if (n <= 1) {
+            return 1;   // caso base
+        }
         return n * factorial(n - 1);     // paso recursivo
     }
 
     /** Suma de a[i..n−1]  ·  T(n) = T(n−1) + O(1) → O(n). */
     public static long sumar(int[] a, int desde) {
-        if (desde == a.length) return 0;               // caso base: nada que sumar
+        if (desde == a.length) {
+            return 0;   // caso base: nada que sumar
+        }
         return a[desde] + sumar(a, desde + 1);         // paso recursivo
     }
 
     /** base^exp por recursión simple  ·  T(exp) = T(exp−1) + O(1) → O(exp). */
     public static long potencia(long base, int exp) {
-        if (exp == 0) return 1;                         // caso base
+        if (exp == 0) {
+            return 1;   // caso base
+        }
         return base * potencia(base, exp - 1);
     }
 

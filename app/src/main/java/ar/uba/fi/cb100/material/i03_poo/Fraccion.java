@@ -14,7 +14,9 @@ public final class Fraccion implements Comparable<Fraccion> {
     private final int denominador;
 
     public Fraccion(int numerador, int denominador) {
-        if (denominador == 0) throw new IllegalArgumentException("denominador cero");
+        if (denominador == 0) {
+            throw new IllegalArgumentException("denominador cero");
+        }
         int signo = denominador < 0 ? -1 : 1;
         int g = mcd(Math.abs(numerador), Math.abs(denominador));
         this.numerador = signo * numerador / g;
@@ -37,8 +39,12 @@ public final class Fraccion implements Comparable<Fraccion> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Fraccion f)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Fraccion f)) {
+            return false;
+        }
         return numerador == f.numerador && denominador == f.denominador;
     }
 

@@ -1,6 +1,5 @@
 package ar.uba.fi.cb100.material.i01_intro;
 
-
 import java.util.Random;
 
 /**

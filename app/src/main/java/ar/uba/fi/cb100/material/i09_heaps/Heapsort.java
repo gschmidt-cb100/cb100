@@ -17,7 +17,9 @@ public final class Heapsort {
     public static void ordenar(int[] a) {
         int n = a.length;
         // Fase 1: heapify como MAX-heap (desde el último nodo interno).
-        for (int i = n / 2 - 1; i >= 0; i--) hundir(a, i, n);
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            hundir(a, i, n);
+        }
         // Fase 2: extraer el máximo n veces, dejándolo al final.
         for (int fin = n - 1; fin > 0; fin--) {
             int aux = a[0]; a[0] = a[fin]; a[fin] = aux;   // máximo a su lugar final
@@ -29,9 +31,15 @@ public final class Heapsort {
     private static void hundir(int[] a, int i, int n) {
         while (true) {
             int izquierdo = 2 * i + 1, derecho = 2 * i + 2, mayor = i;
-            if (izquierdo < n && a[izquierdo] > a[mayor]) mayor = izquierdo;
-            if (derecho < n && a[derecho] > a[mayor])     mayor = derecho;
-            if (mayor == i) break;
+            if (izquierdo < n && a[izquierdo] > a[mayor]) {
+                mayor = izquierdo;
+            }
+            if (derecho < n && a[derecho] > a[mayor]) {
+                mayor = derecho;
+            }
+            if (mayor == i) {
+                break;
+            }
             int aux = a[i]; a[i] = a[mayor]; a[mayor] = aux;
             i = mayor;
         }

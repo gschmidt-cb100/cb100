@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
-import java.util.List;
 
 /**
  * Operaciones más completas con archivos y directorios usando {@link Files}:
@@ -23,18 +22,22 @@ public class ArchivosAvanzado {
 
         // Anexar al final (append) sin borrar lo anterior.
         Files.writeString(archivo, "9\n", StandardOpenOption.APPEND);
-        List<String> lineas = Files.readAllLines(archivo);
-        System.out.println("líneas: " + lineas);
+        String[] lineas = Files.readString(archivo).split("\n");   // separar por líneas
+        System.out.println("cantidad de líneas: " + lineas.length);
 
         // Copiar el archivo.
         Path copia = dir.resolve("copia.txt");
         Files.copy(archivo, copia, StandardCopyOption.REPLACE_EXISTING);
         System.out.println("existe la copia: " + Files.exists(copia));
 
-        // Listar el contenido del directorio (Files.list devuelve un Stream).
+        // Listar el contenido del directorio.
+        // (Files.list devuelve un Stream, un tema de la Unidad 12; por ahora
+        //  alcanza con saber que existe y que hay que cerrarlo con try-with-resources.)
         System.out.println("contenido del directorio:");
-        try (var stream = Files.list(dir)) {
-            stream.forEach(p -> System.out.println("  " + p.getFileName()));
+        try (var contenido = Files.list(dir)) {
+            for (Path entrada : contenido.toList()) {
+                System.out.println("  " + entrada.getFileName());
+            }
         }
 
         // Limpiar todo.

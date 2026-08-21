@@ -3,7 +3,6 @@ package ar.uba.fi.cb100.material.i01_intro;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
 
 /**
  * Lectura y escritura de archivos de texto con la API {@code java.nio.file.Files}.
@@ -21,8 +20,8 @@ public class ArchivosDemo {
         System.out.println("Contenido:\n" + contenido);
 
         // Leer línea por línea.
-        List<String> lineas = Files.readAllLines(archivo);
-        System.out.println("Cantidad de líneas: " + lineas.size());
+        String[] lineas = Files.readString(archivo).split("\n");   // separar por líneas
+        System.out.println("Cantidad de líneas: " + lineas.length);
 
         Files.deleteIfExists(archivo);   // limpiar el archivo temporal
     }

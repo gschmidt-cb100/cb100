@@ -13,7 +13,9 @@ public class RadixSort {
     public static int[] ordenar(int[] entrada) {
         int[] a = Arrays.copyOf(entrada, entrada.length);
         int max = 0;
-        for (int x : a) max = Math.max(max, x);
+        for (int x : a) {
+            max = Math.max(max, x);
+        }
 
         for (int exp = 1; max / exp > 0; exp *= 10) {   // una pasada por dígito
             a = ordenarPorDigito(a, exp);
@@ -26,8 +28,12 @@ public class RadixSort {
         int[] salida = new int[a.length];
         int[] conteo = new int[10];
 
-        for (int x : a) conteo[(x / exp) % 10]++;
-        for (int d = 1; d < 10; d++) conteo[d] += conteo[d - 1];   // posiciones acumuladas
+        for (int x : a) {
+            conteo[(x / exp) % 10]++;
+        }
+        for (int d = 1; d < 10; d++) {
+            conteo[d] += conteo[d - 1];   // posiciones acumuladas
+        }
         for (int i = a.length - 1; i >= 0; i--) {                  // de atrás → estable
             int d = (a[i] / exp) % 10;
             salida[--conteo[d]] = a[i];

@@ -27,10 +27,18 @@ public record Temperatura(double celsius) {
     }
 
     private int franja() {
-        if (celsius < 0)  return 0;
-        if (celsius < 12) return 1;
-        if (celsius < 22) return 2;
-        if (celsius < 30) return 3;
+        if (celsius < 0) {
+            return 0;
+        }
+        if (celsius < 12) {
+            return 1;
+        }
+        if (celsius < 22) {
+            return 2;
+        }
+        if (celsius < 30) {
+            return 3;
+        }
         return 4;
     }
 }

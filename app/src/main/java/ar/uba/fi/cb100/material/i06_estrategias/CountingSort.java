@@ -12,12 +12,16 @@ public class CountingSort {
 
     public static int[] ordenar(int[] a, int maximo) {
         int[] conteo = new int[maximo + 1];
-        for (int x : a) conteo[x]++;                 // contar apariciones
+        for (int x : a) {
+            conteo[x]++;   // contar apariciones
+        }
 
         int[] resultado = new int[a.length];
         int i = 0;
         for (int valor = 0; valor <= maximo; valor++) {
-            while (conteo[valor]-- > 0) resultado[i++] = valor;   // reconstruir
+            while (conteo[valor]-- > 0) {
+                resultado[i++] = valor;   // reconstruir
+            }
         }
         return resultado;
     }

@@ -25,15 +25,23 @@ public class VectorDinamico<T> implements Lista<T> {
 
     @Override
     public void agregar(T x) {
-        if (tamanio == datos.length) redimensionar(datos.length * 2);
+        if (tamanio == datos.length) {
+            redimensionar(datos.length * 2);
+        }
         datos[tamanio++] = x;
     }
 
     @Override
     public void insertar(int i, T x) {
-        if (i < 0 || i > tamanio) throw new IndexOutOfBoundsException("índice " + i);
-        if (tamanio == datos.length) redimensionar(datos.length * 2);
-        for (int k = tamanio; k > i; k--) datos[k] = datos[k - 1];   // correr a la derecha
+        if (i < 0 || i > tamanio) {
+            throw new IndexOutOfBoundsException("índice " + i);
+        }
+        if (tamanio == datos.length) {
+            redimensionar(datos.length * 2);
+        }
+        for (int k = tamanio; k > i; k--) {
+            datos[k] = datos[k - 1];   // correr a la derecha
+        }
         datos[i] = x;
         tamanio++;
     }
@@ -50,7 +58,9 @@ public class VectorDinamico<T> implements Lista<T> {
     public T eliminar(int i) {
         verificar(i);
         T valor = (T) datos[i];
-        for (int k = i; k < tamanio - 1; k++) datos[k] = datos[k + 1];  // correr a la izquierda
+        for (int k = i; k < tamanio - 1; k++) {
+            datos[k] = datos[k + 1];   // correr a la izquierda
+        }
         datos[--tamanio] = null;   // liberar la referencia (evitar fuga)
         return valor;
     }
@@ -58,7 +68,9 @@ public class VectorDinamico<T> implements Lista<T> {
     @Override
     public int indiceDe(T x) {
         for (int i = 0; i < tamanio; i++) {
-            if (Objects.equals(datos[i], x)) return i;
+            if (Objects.equals(datos[i], x)) {
+                return i;
+            }
         }
         return -1;
     }
@@ -71,7 +83,9 @@ public class VectorDinamico<T> implements Lista<T> {
     @Override
     @SuppressWarnings("unchecked")
     public void agregarTodos(Lista<T> otra) {
-        for (int i = 0; i < otra.tamanio(); i++) agregar(otra.obtener(i));
+        for (int i = 0; i < otra.tamanio(); i++) {
+            agregar(otra.obtener(i));
+        }
     }
 
     @Override public int tamanio()      { return tamanio; }
@@ -96,14 +110,18 @@ public class VectorDinamico<T> implements Lista<T> {
     }
 
     private void verificar(int i) {
-        if (i < 0 || i >= tamanio) throw new IndexOutOfBoundsException("índice " + i);
+        if (i < 0 || i >= tamanio) {
+            throw new IndexOutOfBoundsException("índice " + i);
+        }
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < tamanio; i++) {
-            if (i > 0) sb.append(", ");
+            if (i > 0) {
+                sb.append(", ");
+            }
             sb.append(datos[i]);
         }
         return sb.append("]").toString();

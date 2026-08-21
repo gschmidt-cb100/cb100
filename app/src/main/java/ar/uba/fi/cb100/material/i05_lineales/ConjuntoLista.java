@@ -13,7 +13,9 @@ public class ConjuntoLista<T> implements Conjunto<T> {
 
     @Override
     public boolean agregar(T x) {
-        if (elementos.contiene(x)) return false;   // no se admiten duplicados
+        if (elementos.contiene(x)) {
+            return false;   // no se admiten duplicados
+        }
         elementos.agregar(x);
         return true;
     }
@@ -23,7 +25,9 @@ public class ConjuntoLista<T> implements Conjunto<T> {
     @Override
     public boolean eliminar(T x) {
         int i = elementos.indiceDe(x);
-        if (i < 0) return false;
+        if (i < 0) {
+            return false;
+        }
         elementos.eliminar(i);
         return true;
     }
@@ -31,15 +35,21 @@ public class ConjuntoLista<T> implements Conjunto<T> {
     @Override
     @SuppressWarnings("unchecked")
     public void agregarTodos(Conjunto<T> otro) {
-        for (Object o : otro.aArreglo()) agregar((T) o);
+        for (Object o : otro.aArreglo()) {
+            agregar((T) o);
+        }
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public Conjunto<T> union(Conjunto<T> otro) {
         ConjuntoLista<T> r = new ConjuntoLista<>();
-        for (Object o : aArreglo())        r.agregar((T) o);
-        for (Object o : otro.aArreglo())   r.agregar((T) o);   // los repetidos se ignoran
+        for (Object o : aArreglo()) {
+            r.agregar((T) o);
+        }
+        for (Object o : otro.aArreglo()) {
+            r.agregar((T) o);   // los repetidos se ignoran
+        }
         return r;
     }
 
@@ -48,7 +58,9 @@ public class ConjuntoLista<T> implements Conjunto<T> {
     public Conjunto<T> interseccion(Conjunto<T> otro) {
         ConjuntoLista<T> r = new ConjuntoLista<>();
         for (Object o : aArreglo()) {
-            if (otro.contiene((T) o)) r.agregar((T) o);        // sólo los que están en ambos
+            if (otro.contiene((T) o)) {
+                r.agregar((T) o);   // sólo los que están en ambos
+            }
         }
         return r;
     }
@@ -58,7 +70,9 @@ public class ConjuntoLista<T> implements Conjunto<T> {
     public Conjunto<T> diferencia(Conjunto<T> otro) {
         ConjuntoLista<T> r = new ConjuntoLista<>();
         for (Object o : aArreglo()) {
-            if (!otro.contiene((T) o)) r.agregar((T) o);       // los que NO están en otro
+            if (!otro.contiene((T) o)) {
+                r.agregar((T) o);   // los que NO están en otro
+            }
         }
         return r;
     }
@@ -68,7 +82,9 @@ public class ConjuntoLista<T> implements Conjunto<T> {
     @Override
     public Object[] aArreglo() {
         Object[] a = new Object[elementos.tamanio()];
-        for (int i = 0; i < a.length; i++) a[i] = elementos.obtener(i);
+        for (int i = 0; i < a.length; i++) {
+            a[i] = elementos.obtener(i);
+        }
         return a;
     }
 
@@ -80,7 +96,9 @@ public class ConjuntoLista<T> implements Conjunto<T> {
     private String[] aStringArray() {
         Object[] a = aArreglo();
         String[] s = new String[a.length];
-        for (int i = 0; i < a.length; i++) s[i] = String.valueOf(a[i]);
+        for (int i = 0; i < a.length; i++) {
+            s[i] = String.valueOf(a[i]);
+        }
         return s;
     }
 

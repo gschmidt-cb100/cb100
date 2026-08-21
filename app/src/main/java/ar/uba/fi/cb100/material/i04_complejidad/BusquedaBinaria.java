@@ -12,9 +12,14 @@ public class BusquedaBinaria {
         int lo = 0, hi = a.length - 1;
         while (lo <= hi) {                 // el rango se divide por 2 cada vuelta -> O(log n)
             int mid = (lo + hi) >>> 1;
-            if (a[mid] == x) return mid;
-            if (a[mid] < x) lo = mid + 1;
-            else hi = mid - 1;
+            if (a[mid] == x) {
+                return mid;
+            }
+            if (a[mid] < x) {
+                lo = mid + 1;
+            } else {
+                hi = mid - 1;
+            }
         }
         return -1;                         // no está
     }

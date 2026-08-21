@@ -12,7 +12,9 @@ public class BucketSort {
 
     public static double[] ordenar(double[] a) {
         int n = a.length;
-        if (n == 0) return a.clone();
+        if (n == 0) {
+            return a.clone();
+        }
 
         // n baldes; cada uno junta los valores de un subrango de [0,1).
         double[][] baldes = new double[n][0];
@@ -25,7 +27,9 @@ public class BucketSort {
         int k = 0;
         for (double[] balde : baldes) {
             Arrays.sort(balde);                  // ordenar cada balde
-            for (double x : balde) resultado[k++] = x;   // concatenar
+            for (double x : balde) {
+                resultado[k++] = x;   // concatenar
+            }
         }
         return resultado;
     }

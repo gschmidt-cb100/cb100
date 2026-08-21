@@ -40,7 +40,9 @@ public final class SeleccionDeActividades {
                 new Actividad("C", 4, 7), new Actividad("D", 1, 8),
                 new Actividad("E", 5, 9), new Actividad("F", 8, 10));
         List<Actividad> elegidas = seleccionar(agenda);
-        for (Actividad a : elegidas) System.out.print(a.nombre() + " ");
+        for (Actividad a : elegidas) {
+            System.out.print(a.nombre() + " ");
+        }
         System.out.println();                     // A C F  (3 actividades: el máximo)
     }
 }

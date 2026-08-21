@@ -14,7 +14,9 @@ public class QuickSort {
     }
 
     private static void ordenar(int[] a, int lo, int hi) {
-        if (lo >= hi) return;
+        if (lo >= hi) {
+            return;
+        }
         int p = particionar(a, lo, hi);
         ordenar(a, lo, p - 1);
         ordenar(a, p + 1, hi);

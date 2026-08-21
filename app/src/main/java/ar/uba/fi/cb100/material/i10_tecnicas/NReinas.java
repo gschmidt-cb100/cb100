@@ -54,8 +54,12 @@ public class NReinas {
     private boolean esValida(int fila, int columna) {
         for (int f = 0; f < fila; f++) {
             int c = columnaDe[f];
-            if (c == columna) return false;                      // misma columna
-            if (Math.abs(c - columna) == fila - f) return false; // misma diagonal
+            if (c == columna) {
+                return false;   // misma columna
+            }
+            if (Math.abs(c - columna) == fila - f) {
+                return false;   // misma diagonal
+            }
         }
         return true;                              // (misma fila es imposible: una por fila)
     }

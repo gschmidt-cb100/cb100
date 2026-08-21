@@ -20,13 +20,17 @@ public class Pila<T> {
 
     /** Quita y devuelve el elemento del tope. */
     public T desapilar() {
-        if (estaVacia()) throw new IllegalStateException("la pila está vacía");
+        if (estaVacia()) {
+            throw new IllegalStateException("la pila está vacía");
+        }
         return datos.eliminar(datos.tamanio() - 1);
     }
 
     /** Devuelve (sin quitar) el elemento del tope. */
     public T tope() {
-        if (estaVacia()) throw new IllegalStateException("la pila está vacía");
+        if (estaVacia()) {
+            throw new IllegalStateException("la pila está vacía");
+        }
         return datos.obtener(datos.tamanio() - 1);
     }
 

@@ -13,7 +13,9 @@ public class Benchmark {
     public static void main(String[] args) {
         for (int n : new int[]{1_000_000, 10_000_000, 100_000_000}) {
             int[] a = new int[n];
-            for (int i = 0; i < n; i++) a[i] = i;
+            for (int i = 0; i < n; i++) {
+                a[i] = i;
+            }
 
             long inicio = System.nanoTime();
             long suma = SumaArreglo.sumar(a);

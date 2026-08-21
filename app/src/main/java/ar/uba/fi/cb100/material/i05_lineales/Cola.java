@@ -23,24 +23,31 @@ public class Cola<T> {
     /** Agrega {@code x} al fondo de la cola. */
     public void encolar(T x) {
         Nodo<T> n = new Nodo<>(x);
-        if (fondo == null) frente = fondo = n;
-        else { fondo.siguiente = n; fondo = n; }
+        if (fondo == null) {
+            frente = fondo = n;
+        } else { fondo.siguiente = n; fondo = n; }
         tamanio++;
     }
 
     /** Quita y devuelve el elemento del frente. */
     public T desencolar() {
-        if (estaVacia()) throw new IllegalStateException("la cola está vacía");
+        if (estaVacia()) {
+            throw new IllegalStateException("la cola está vacía");
+        }
         T valor = frente.valor;
         frente = frente.siguiente;
-        if (frente == null) fondo = null;
+        if (frente == null) {
+            fondo = null;
+        }
         tamanio--;
         return valor;
     }
 
     /** Devuelve (sin quitar) el elemento del frente. */
     public T frente() {
-        if (estaVacia()) throw new IllegalStateException("la cola está vacía");
+        if (estaVacia()) {
+            throw new IllegalStateException("la cola está vacía");
+        }
         return frente.valor;
     }
 

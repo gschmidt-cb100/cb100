@@ -51,14 +51,18 @@ public class TablaHashEncadenamiento<K, V> implements Diccionario<K, V> {
         }
         baldes[i] = new Par<>(clave, valor, baldes[i]);   // agrego al frente del balde
         cantidad++;
-        if (factorDeCarga() > FACTOR_DE_CARGA_MAXIMO) rehash();
+        if (factorDeCarga() > FACTOR_DE_CARGA_MAXIMO) {
+            rehash();
+        }
     }
 
     @Override
     public V obtener(K clave) {
         int i = indiceDe(clave, baldes.length);
         for (Par<K, V> p = baldes[i]; p != null; p = p.siguiente) {
-            if (p.clave.equals(clave)) return p.valor;    // recorre SOLO su balde
+            if (p.clave.equals(clave)) {
+                return p.valor;   // recorre SOLO su balde
+            }
         }
         return null;
     }
@@ -72,8 +76,11 @@ public class TablaHashEncadenamiento<K, V> implements Diccionario<K, V> {
         Par<K, V> anterior = null;
         for (Par<K, V> p = baldes[i]; p != null; anterior = p, p = p.siguiente) {
             if (p.clave.equals(clave)) {
-                if (anterior == null) baldes[i] = p.siguiente;   // era el primero
-                else anterior.siguiente = p.siguiente;           // se lo saltea
+                if (anterior == null) {
+                    baldes[i] = p.siguiente;   // era el primero
+                } else {
+                    anterior.siguiente = p.siguiente;   // se lo saltea
+                }
                 cantidad--;
                 return p.valor;
             }

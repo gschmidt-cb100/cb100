@@ -9,7 +9,9 @@ public class PotenciaRapida {
     public static long potencia(long base, int exp) {
         long resultado = 1;
         while (exp > 0) {                 // el exponente se divide por 2 -> O(log n)
-            if ((exp & 1) == 1) resultado *= base;   // bit menos significativo
+            if ((exp & 1) == 1) {
+                resultado *= base;   // bit menos significativo
+            }
             base *= base;
             exp >>= 1;
         }

@@ -15,7 +15,9 @@ public class ContadorDePalabras {
     public static Map<String, Integer> contar(String texto) {
         Map<String, Integer> frecuencia = new HashMap<>();
         for (String palabra : texto.toLowerCase().split("[^\\p{L}]+")) {
-            if (palabra.isEmpty()) continue;
+            if (palabra.isEmpty()) {
+                continue;
+            }
             frecuencia.merge(palabra, 1, Integer::sum);   // crea con 1 o suma 1
         }
         return frecuencia;

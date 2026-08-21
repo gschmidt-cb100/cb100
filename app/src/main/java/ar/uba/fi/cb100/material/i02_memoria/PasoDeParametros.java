@@ -18,7 +18,9 @@ public class PasoDeParametros {
     }
 
     static void mutar(int[] arr) {
-        if (arr.length > 0) arr[0] = 99;   // muta el objeto compartido
+        if (arr.length > 0) {
+            arr[0] = 99;   // muta el objeto compartido
+        }
     }
 
     public static void main(String[] args) {

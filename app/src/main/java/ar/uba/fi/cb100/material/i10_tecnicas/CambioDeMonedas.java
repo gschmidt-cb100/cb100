@@ -39,8 +39,12 @@ public final class CambioDeMonedas {
     }
 
     private static int explorar(int[] monedas, int resto, int usadas, int mejor) {
-        if (resto == 0) return Math.min(mejor, usadas);       // solución completa
-        if (usadas + 1 >= mejor) return mejor;                // PODA: ya no puede mejorar
+        if (resto == 0) {
+            return Math.min(mejor, usadas);   // solución completa
+        }
+        if (usadas + 1 >= mejor) {
+            return mejor;   // PODA: ya no puede mejorar
+        }
         for (int moneda : monedas) {
             if (moneda <= resto) {                            // ELEGIR y AVANZAR
                 mejor = explorar(monedas, resto - moneda, usadas + 1, mejor);
@@ -80,7 +84,9 @@ public final class CambioDeMonedas {
             }
         }
         List<Integer> resultado = new ArrayList<>();
-        if (minimo[monto] == Integer.MAX_VALUE) return resultado;
+        if (minimo[monto] == Integer.MAX_VALUE) {
+            return resultado;
+        }
         for (int m = monto; m > 0; m -= eleccion[m]) {        // deshacer el camino
             resultado.add(eleccion[m]);
         }

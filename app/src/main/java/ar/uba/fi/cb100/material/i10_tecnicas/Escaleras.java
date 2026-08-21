@@ -20,15 +20,21 @@ public final class Escaleras {
     }
 
     private static long memo(int n, long[] memo) {
-        if (n <= 1) return 1;                     // 1 forma de subir 0 o 1 escalón
-        if (memo[n] != 0) return memo[n];         // ya lo calculé: lo devuelvo GRATIS
+        if (n <= 1) {
+            return 1;   // 1 forma de subir 0 o 1 escalón
+        }
+        if (memo[n] != 0) {
+            return memo[n];   // ya lo calculé: lo devuelvo GRATIS
+        }
         memo[n] = memo(n - 1, memo) + memo(n - 2, memo);
         return memo[n];
     }
 
     /** TABULACIÓN (bottom-up): llenar la tabla desde el caso base. */
     public static long conTabulacion(int n) {
-        if (n <= 1) return 1;
+        if (n <= 1) {
+            return 1;
+        }
         long[] formas = new long[n + 1];
         formas[0] = 1;                            // casos base
         formas[1] = 1;

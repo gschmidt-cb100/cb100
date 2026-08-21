@@ -39,7 +39,9 @@ public class SistemaDeTurnos {
 
     /** Atiende al primero de la fila y lo agrega al historial. */
     public int atender() {
-        if (filaDeEspera.isEmpty()) throw new IllegalStateException("no hay turnos");
+        if (filaDeEspera.isEmpty()) {
+            throw new IllegalStateException("no hay turnos");
+        }
         int dni = filaDeEspera.pollFirst();   // desencolar: del FRENTE (FIFO)
         atendidos.add(dni);                   // historial en orden de atención
         deshacer.push(dni);                   // apilar para poder deshacer (LIFO)
@@ -48,7 +50,9 @@ public class SistemaDeTurnos {
 
     /** Deshace la ÚLTIMA atención: el cliente vuelve al frente de la fila. */
     public int deshacerUltimaAtencion() {
-        if (deshacer.isEmpty()) throw new IllegalStateException("nada para deshacer");
+        if (deshacer.isEmpty()) {
+            throw new IllegalStateException("nada para deshacer");
+        }
         int dni = deshacer.pop();                     // el último atendido (LIFO)
         atendidos.remove(atendidos.size() - 1);       // sale del historial
         filaDeEspera.addFirst(dni);                   // vuelve AL FRENTE de la fila

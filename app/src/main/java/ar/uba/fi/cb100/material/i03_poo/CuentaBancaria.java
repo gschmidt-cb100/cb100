@@ -21,13 +21,19 @@ public class CuentaBancaria {
     }
 
     public void depositar(double monto) {
-        if (monto <= 0) throw new IllegalArgumentException("el monto debe ser positivo");
+        if (monto <= 0) {
+            throw new IllegalArgumentException("el monto debe ser positivo");
+        }
         saldo += monto;
     }
 
     public void extraer(double monto) {
-        if (monto <= 0) throw new IllegalArgumentException("el monto debe ser positivo");
-        if (monto > saldo) throw new SaldoInsuficienteException(saldo, monto);
+        if (monto <= 0) {
+            throw new IllegalArgumentException("el monto debe ser positivo");
+        }
+        if (monto > saldo) {
+            throw new SaldoInsuficienteException(saldo, monto);
+        }
         saldo -= monto;
     }
 

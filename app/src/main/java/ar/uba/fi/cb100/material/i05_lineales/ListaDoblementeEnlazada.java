@@ -36,7 +36,9 @@ public class ListaDoblementeEnlazada<T> implements Lista<T> {
 
     @Override
     public void insertar(int i, T x) {
-        if (i < 0 || i > tamanio) throw new IndexOutOfBoundsException("índice " + i);
+        if (i < 0 || i > tamanio) {
+            throw new IndexOutOfBoundsException("índice " + i);
+        }
         if (i == tamanio) { agregar(x); return; }
         Nodo<T> actual = nodoEn(i);
         Nodo<T> n = new Nodo<>(x);
@@ -44,8 +46,11 @@ public class ListaDoblementeEnlazada<T> implements Lista<T> {
         n.siguiente = actual;
         n.anterior = ant;
         actual.anterior = n;
-        if (ant == null) primero = n;          // insertó al principio
-        else ant.siguiente = n;
+        if (ant == null) {
+            primero = n;   // insertó al principio
+        } else {
+            ant.siguiente = n;
+        }
         tamanio++;
     }
 
@@ -60,8 +65,16 @@ public class ListaDoblementeEnlazada<T> implements Lista<T> {
         verificar(i);
         Nodo<T> nodo = nodoEn(i);
         Nodo<T> ant = nodo.anterior, sig = nodo.siguiente;
-        if (ant == null) primero = sig; else ant.siguiente = sig;
-        if (sig == null) ultimo = ant; else sig.anterior = ant;
+        if (ant == null) {
+            primero = sig;
+        } else {
+            ant.siguiente = sig;
+        }
+        if (sig == null) {
+            ultimo = ant;
+        } else {
+            sig.anterior = ant;
+        }
         tamanio--;
         return nodo.valor;
     }
@@ -70,7 +83,9 @@ public class ListaDoblementeEnlazada<T> implements Lista<T> {
     public int indiceDe(T x) {
         int i = 0;
         for (Nodo<T> n = primero; n != null; n = n.siguiente, i++) {
-            if (Objects.equals(n.valor, x)) return i;
+            if (Objects.equals(n.valor, x)) {
+                return i;
+            }
         }
         return -1;
     }
@@ -79,7 +94,9 @@ public class ListaDoblementeEnlazada<T> implements Lista<T> {
 
     @Override
     public void agregarTodos(Lista<T> otra) {
-        for (int i = 0; i < otra.tamanio(); i++) agregar(otra.obtener(i));
+        for (int i = 0; i < otra.tamanio(); i++) {
+            agregar(otra.obtener(i));
+        }
     }
 
     @Override public int tamanio()      { return tamanio; }
@@ -89,24 +106,32 @@ public class ListaDoblementeEnlazada<T> implements Lista<T> {
     private Nodo<T> nodoEn(int i) {
         if (i < tamanio / 2) {
             Nodo<T> n = primero;
-            for (int k = 0; k < i; k++) n = n.siguiente;
+            for (int k = 0; k < i; k++) {
+                n = n.siguiente;
+            }
             return n;
         } else {
             Nodo<T> n = ultimo;
-            for (int k = tamanio - 1; k > i; k--) n = n.anterior;
+            for (int k = tamanio - 1; k > i; k--) {
+                n = n.anterior;
+            }
             return n;
         }
     }
 
     private void verificar(int i) {
-        if (i < 0 || i >= tamanio) throw new IndexOutOfBoundsException("índice " + i);
+        if (i < 0 || i >= tamanio) {
+            throw new IndexOutOfBoundsException("índice " + i);
+        }
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
         for (Nodo<T> n = primero; n != null; n = n.siguiente) {
-            if (n != primero) sb.append(" <-> ");
+            if (n != primero) {
+                sb.append(" <-> ");
+            }
             sb.append(n.valor);
         }
         return sb.append("]").toString();

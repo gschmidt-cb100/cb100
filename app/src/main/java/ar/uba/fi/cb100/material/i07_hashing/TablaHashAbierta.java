@@ -34,12 +34,16 @@ public class TablaHashAbierta<K, V> implements Diccionario<K, V> {
 
     @Override
     public void poner(K clave, V valor) {
-        if ((double) (ocupadas + 1) / claves.length > FACTOR_DE_CARGA_MAXIMO) rehash();
+        if ((double) (ocupadas + 1) / claves.length > FACTOR_DE_CARGA_MAXIMO) {
+            rehash();
+        }
         int i = indiceInicial(clave);
         int primeraLapida = -1;
         while (claves[i] != null) {                       // sondeo lineal
             if (claves[i] == LAPIDA) {
-                if (primeraLapida == -1) primeraLapida = i;   // celda reutilizable
+                if (primeraLapida == -1) {
+                    primeraLapida = i;   // celda reutilizable
+                }
             } else if (claves[i].equals(clave)) {
                 valores[i] = valor;                       // ya estaba: reemplazo
                 return;
@@ -47,7 +51,9 @@ public class TablaHashAbierta<K, V> implements Diccionario<K, V> {
             i = (i + 1) % claves.length;                  // pruebo la siguiente
         }
         int destino = (primeraLapida != -1) ? primeraLapida : i;
-        if (destino == i) ocupadas++;                     // celda nueva (no lápida)
+        if (destino == i) {
+            ocupadas++;   // celda nueva (no lápida)
+        }
         claves[destino] = clave;
         valores[destino] = valor;
         cantidad++;
@@ -57,7 +63,9 @@ public class TablaHashAbierta<K, V> implements Diccionario<K, V> {
     private int celdaDe(K clave) {
         int i = indiceInicial(clave);
         while (claves[i] != null) {                       // null = fin de la cadena
-            if (claves[i] != LAPIDA && claves[i].equals(clave)) return i;
+            if (claves[i] != LAPIDA && claves[i].equals(clave)) {
+                return i;
+            }
             i = (i + 1) % claves.length;                  // las lápidas NO cortan
         }
         return -1;
@@ -77,7 +85,9 @@ public class TablaHashAbierta<K, V> implements Diccionario<K, V> {
     @SuppressWarnings("unchecked")
     public V quitar(K clave) {
         int i = celdaDe(clave);
-        if (i == -1) return null;
+        if (i == -1) {
+            return null;
+        }
         V valor = (V) valores[i];
         claves[i] = LAPIDA;            // ¡no null! una lápida mantiene viva la cadena
         valores[i] = null;

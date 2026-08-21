@@ -41,7 +41,9 @@ public class ListaCircularDoble<T> implements Lista<T> {
 
     @Override
     public void insertar(int i, T x) {
-        if (i < 0 || i > tamanio) throw new IndexOutOfBoundsException("índice " + i);
+        if (i < 0 || i > tamanio) {
+            throw new IndexOutOfBoundsException("índice " + i);
+        }
         if (i == tamanio) { agregar(x); return; }
         Nodo<T> actual = nodoEn(i);
         Nodo<T> n = new Nodo<>(x);
@@ -50,7 +52,9 @@ public class ListaCircularDoble<T> implements Lista<T> {
         n.siguiente = actual;
         ant.siguiente = n;
         actual.anterior = n;
-        if (i == 0) primero = n;
+        if (i == 0) {
+            primero = n;
+        }
         tamanio++;
     }
 
@@ -69,7 +73,9 @@ public class ListaCircularDoble<T> implements Lista<T> {
         } else {
             nodo.anterior.siguiente = nodo.siguiente;
             nodo.siguiente.anterior = nodo.anterior;
-            if (nodo == primero) primero = nodo.siguiente;
+            if (nodo == primero) {
+                primero = nodo.siguiente;
+            }
         }
         tamanio--;
         return nodo.valor;
@@ -79,7 +85,9 @@ public class ListaCircularDoble<T> implements Lista<T> {
     public int indiceDe(T x) {
         Nodo<T> n = primero;
         for (int i = 0; i < tamanio; i++, n = n.siguiente) {
-            if (Objects.equals(n.valor, x)) return i;
+            if (Objects.equals(n.valor, x)) {
+                return i;
+            }
         }
         return -1;
     }
@@ -88,7 +96,9 @@ public class ListaCircularDoble<T> implements Lista<T> {
 
     @Override
     public void agregarTodos(Lista<T> otra) {
-        for (int i = 0; i < otra.tamanio(); i++) agregar(otra.obtener(i));
+        for (int i = 0; i < otra.tamanio(); i++) {
+            agregar(otra.obtener(i));
+        }
     }
 
     @Override public int tamanio()      { return tamanio; }
@@ -96,12 +106,16 @@ public class ListaCircularDoble<T> implements Lista<T> {
 
     private Nodo<T> nodoEn(int i) {
         Nodo<T> n = primero;
-        for (int k = 0; k < i; k++) n = n.siguiente;
+        for (int k = 0; k < i; k++) {
+            n = n.siguiente;
+        }
         return n;
     }
 
     private void verificar(int i) {
-        if (i < 0 || i >= tamanio) throw new IndexOutOfBoundsException("índice " + i);
+        if (i < 0 || i >= tamanio) {
+            throw new IndexOutOfBoundsException("índice " + i);
+        }
     }
 
     @Override
@@ -109,7 +123,9 @@ public class ListaCircularDoble<T> implements Lista<T> {
         StringBuilder sb = new StringBuilder("(");
         Nodo<T> n = primero;
         for (int i = 0; i < tamanio; i++, n = n.siguiente) {
-            if (i > 0) sb.append(" <-> ");
+            if (i > 0) {
+                sb.append(" <-> ");
+            }
             sb.append(n.valor);
         }
         return sb.append(" <->…)").toString();

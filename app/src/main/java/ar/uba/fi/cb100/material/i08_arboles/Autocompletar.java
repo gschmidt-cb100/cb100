@@ -26,7 +26,9 @@ public class Autocompletar {
         String hasta = desde + Character.MAX_VALUE;   // cota superior del rango
         List<String> sugerencias = new ArrayList<>();
         for (String p : palabras.subSet(desde, true, hasta, false)) {
-            if (sugerencias.size() == limite) break;
+            if (sugerencias.size() == limite) {
+                break;
+            }
             sugerencias.add(p);
         }
         return sugerencias;

@@ -21,7 +21,9 @@ public class ListaCircular<T> implements Lista<T> {
     private int tamanio;
 
     private void cerrarCirculo() {
-        if (ultimo != null) ultimo.siguiente = primero;   // el último apunta al primero
+        if (ultimo != null) {
+            ultimo.siguiente = primero;   // el último apunta al primero
+        }
     }
 
     @Override
@@ -35,7 +37,9 @@ public class ListaCircular<T> implements Lista<T> {
 
     @Override
     public void insertar(int i, T x) {
-        if (i < 0 || i > tamanio) throw new IndexOutOfBoundsException("índice " + i);
+        if (i < 0 || i > tamanio) {
+            throw new IndexOutOfBoundsException("índice " + i);
+        }
         if (i == tamanio) { agregar(x); return; }
         Nodo<T> n = new Nodo<>(x);
         if (i == 0) {
@@ -63,12 +67,16 @@ public class ListaCircular<T> implements Lista<T> {
         if (i == 0) {
             eliminado = primero;
             primero = (tamanio == 1) ? null : primero.siguiente;
-            if (tamanio == 1) ultimo = null;
+            if (tamanio == 1) {
+                ultimo = null;
+            }
         } else {
             Nodo<T> anterior = nodoEn(i - 1);
             eliminado = anterior.siguiente;
             anterior.siguiente = eliminado.siguiente;
-            if (eliminado == ultimo) ultimo = anterior;
+            if (eliminado == ultimo) {
+                ultimo = anterior;
+            }
         }
         cerrarCirculo();
         tamanio--;
@@ -79,7 +87,9 @@ public class ListaCircular<T> implements Lista<T> {
     public int indiceDe(T x) {
         Nodo<T> n = primero;
         for (int i = 0; i < tamanio; i++, n = n.siguiente) {
-            if (Objects.equals(n.valor, x)) return i;
+            if (Objects.equals(n.valor, x)) {
+                return i;
+            }
         }
         return -1;
     }
@@ -88,7 +98,9 @@ public class ListaCircular<T> implements Lista<T> {
 
     @Override
     public void agregarTodos(Lista<T> otra) {
-        for (int i = 0; i < otra.tamanio(); i++) agregar(otra.obtener(i));
+        for (int i = 0; i < otra.tamanio(); i++) {
+            agregar(otra.obtener(i));
+        }
     }
 
     @Override public int tamanio()      { return tamanio; }
@@ -96,12 +108,16 @@ public class ListaCircular<T> implements Lista<T> {
 
     private Nodo<T> nodoEn(int i) {
         Nodo<T> n = primero;
-        for (int k = 0; k < i; k++) n = n.siguiente;
+        for (int k = 0; k < i; k++) {
+            n = n.siguiente;
+        }
         return n;
     }
 
     private void verificar(int i) {
-        if (i < 0 || i >= tamanio) throw new IndexOutOfBoundsException("índice " + i);
+        if (i < 0 || i >= tamanio) {
+            throw new IndexOutOfBoundsException("índice " + i);
+        }
     }
 
     @Override
@@ -109,7 +125,9 @@ public class ListaCircular<T> implements Lista<T> {
         StringBuilder sb = new StringBuilder("(");
         Nodo<T> n = primero;
         for (int i = 0; i < tamanio; i++, n = n.siguiente) {
-            if (i > 0) sb.append(" -> ");
+            if (i > 0) {
+                sb.append(" -> ");
+            }
             sb.append(n.valor);
         }
         return sb.append(" ->…)").toString();

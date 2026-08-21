@@ -12,13 +12,17 @@ public class TorresHanoi {
 
     /** Cantidad de movimientos para n discos: 2ⁿ − 1. */
     public static long movimientos(int n) {
-        if (n == 0) return 0;                       // caso base
+        if (n == 0) {
+            return 0;   // caso base
+        }
         return 2 * movimientos(n - 1) + 1;          // recurrencia
     }
 
     /** Imprime la secuencia de movimientos para resolver n discos. */
     public static void resolver(int n, char origen, char destino, char auxiliar) {
-        if (n == 0) return;                                     // caso base
+        if (n == 0) {
+            return;   // caso base
+        }
         resolver(n - 1, origen, auxiliar, destino);            // 1) n−1 al auxiliar
         System.out.println("mover disco " + n + " de " + origen + " a " + destino);
         resolver(n - 1, auxiliar, destino, origen);            // 3) n−1 al destino

@@ -23,7 +23,9 @@ public class DemoApiNativa {
 
         // ¡el iterador NO está ordenado!
         PriorityQueue<Integer> otra = new PriorityQueue<>();
-        for (int v : new int[]{5, 1, 4, 2, 3}) otra.offer(v);
+        for (int v : new int[]{5, 1, 4, 2, 3}) {
+            otra.offer(v);
+        }
         System.out.println(otra);            // p. ej. [1, 2, 4, 5, 3] — NO es el orden
 
         // --- max-heap: se invierte el comparador -------------------------------

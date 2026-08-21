@@ -50,19 +50,25 @@ public class MinHeap<T extends Comparable<T>> {
     /** El mínimo, sin sacarlo: la raíz. O(1). */
     @SuppressWarnings("unchecked")
     public T verMinimo() {
-        if (cantidad == 0) throw new IllegalStateException("heap vacío");
+        if (cantidad == 0) {
+            throw new IllegalStateException("heap vacío");
+        }
         return (T) datos[0];
     }
 
     /** Saca el mínimo: la raíz sale, la última hoja sube a raíz y se HUNDE. */
     @SuppressWarnings("unchecked")
     public T desencolarMinimo() {
-        if (cantidad == 0) throw new IllegalStateException("heap vacío");
+        if (cantidad == 0) {
+            throw new IllegalStateException("heap vacío");
+        }
         T minimo = (T) datos[0];
         cantidad--;
         datos[0] = datos[cantidad];      // la última hoja pasa a la raíz
         datos[cantidad] = null;
-        if (cantidad > 0) hundir(0);     // y se hunde hasta su lugar
+        if (cantidad > 0) {
+            hundir(0);   // y se hunde hasta su lugar
+        }
         return minimo;
     }
 
@@ -74,7 +80,9 @@ public class MinHeap<T extends Comparable<T>> {
     private void flotar(int i) {
         while (i > 0) {
             int padre = (i - 1) / 2;
-            if (comparar(i, padre) >= 0) break;   // ya no es menor: quedó bien
+            if (comparar(i, padre) >= 0) {
+                break;   // ya no es menor: quedó bien
+            }
             intercambiar(i, padre);
             i = padre;
         }
@@ -90,9 +98,15 @@ public class MinHeap<T extends Comparable<T>> {
             int izquierdo = 2 * i + 1;
             int derecho = 2 * i + 2;
             int menor = i;
-            if (izquierdo < cantidad && comparar(izquierdo, menor) < 0) menor = izquierdo;
-            if (derecho < cantidad && comparar(derecho, menor) < 0)     menor = derecho;
-            if (menor == i) break;               // ya es menor que ambos hijos
+            if (izquierdo < cantidad && comparar(izquierdo, menor) < 0) {
+                menor = izquierdo;
+            }
+            if (derecho < cantidad && comparar(derecho, menor) < 0) {
+                menor = derecho;
+            }
+            if (menor == i) {
+                break;   // ya es menor que ambos hijos
+            }
             intercambiar(i, menor);
             i = menor;
         }
@@ -112,10 +126,14 @@ public class MinHeap<T extends Comparable<T>> {
 
     public static void main(String[] args) {
         MinHeap<Integer> heap = new MinHeap<>();
-        for (int v : new int[]{7, 3, 9, 1, 5}) heap.encolar(v);
+        for (int v : new int[]{7, 3, 9, 1, 5}) {
+            heap.encolar(v);
+        }
         System.out.println(heap.verMinimo());          // 1
         System.out.print("salen: ");
-        while (!heap.estaVacio()) System.out.print(heap.desencolarMinimo() + " ");
+        while (!heap.estaVacio()) {
+            System.out.print(heap.desencolarMinimo() + " ");
+        }
         System.out.println();                          // 1 3 5 7 9 (¡ordenados!)
 
         MinHeap<Integer> desdeArreglo = heapify(new Integer[]{12, 5, 9, 3, 20, 7});
