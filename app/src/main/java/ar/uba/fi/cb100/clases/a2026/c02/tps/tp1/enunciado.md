@@ -429,7 +429,7 @@ try (Workbook libro = new XSSFWorkbook()) {
 | Reportes con los valores exactos de la sección 5 | 15 |
 | Los dos exportadores detrás del TDA `ExportadorDeReporte` | 10 |
 | Tests (mínimo 12, que pasen y que prueben algo real) | 15 |
-| **Bonus XLSX** | +10 |
+| **Bonus: exportar a Excel (.xlsx)** | +10 (equivale a **1 punto** en la nota final) |
 
 Descuentan: usar colecciones o streams (−20), métodos de más de 30 líneas
 (−5 c/u), atributos públicos sin encapsular (−10).

@@ -29,6 +29,18 @@ dependencies {
     // Librería externa de ejemplo: utilidades de texto (StringUtils, etc.).
     implementation 'org.apache.commons:commons-lang3:3.17.0'
 
+    // Apache POI: lectura y escritura de planillas .xlsx.
+    // La usa ar.uba.fi.cb100.librerias.excel.ExcelUtils.
+    // Ojo: son ~19 MB en 16 jars. Se bajan una sola vez y quedan
+    // en la cache de Gradle.
+    implementation 'org.apache.poi:poi-ooxml:5.5.1'
+
+    // Sin estas dos líneas, POI imprime al arrancar el mensaje
+    // "ERROR Log4j API could not find a logging provider".
+    // No es un error del programa: es POI buscando un logger.
+    runtimeOnly 'org.apache.logging.log4j:log4j-to-slf4j:2.24.3'
+    runtimeOnly 'org.slf4j:slf4j-nop:2.0.16'
+
     // JUnit 5: el framework para escribir pruebas unitarias.
     testImplementation platform('org.junit:junit-bom:5.11.3')
     testImplementation 'org.junit.jupiter:junit-jupiter'
