@@ -47,7 +47,6 @@ public class Principal03 {
 
     }
 
-
     public static void hacerSonido(Animal animal) {
         System.out.println(animal.sonido());
     }

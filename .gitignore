@@ -17,3 +17,6 @@ out/
 .DS_Store
 Thumbs.db
 /app/src/main/java/ar/uba/fi/cb100/clases/a2026/c02/tps/tp1/generar-pdf.py
+
+# --- Python (generadores de diagramas y PDFs) ---
+__pycache__/

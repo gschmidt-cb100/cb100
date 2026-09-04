@@ -47,6 +47,15 @@ dependencies {
     testRuntimeOnly    'org.junit.platform:junit-platform-launcher'
 }
 
+// --- Codificación de los fuentes --------------------------------------
+// Sin esto, en Windows javac lee los .java como windows-1252 y cualquier
+// "Í", "Ï" o "—" dentro de un String rompe la compilación con
+// "unmappable character for encoding windows-1252". Todo el material
+// está en castellano: los fuentes son UTF-8, siempre.
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
 // --- Cómo correr los tests --------------------------------------------
 test {
     useJUnitPlatform()   // decirle a Gradle que use JUnit 5
@@ -56,4 +65,10 @@ test {
 // --- Clase principal (la que tiene el método main) --------------------
 application {
     mainClass = 'ar.uba.fi.cb100.material.i01_intro.HolaCB100'
+
+    // Codificación de la SALIDA del programa. Compilar en UTF-8 no alcanza:
+    // desde Java 18, System.out escribe con la página de códigos de la
+    // consola de Windows (cp1252), y una terminal UTF-8 muestra "Luc�a".
+    // Con esto, todo lo que el programa imprime sale en UTF-8.
+    applicationDefaultJvmArgs = ['-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8']
 }
