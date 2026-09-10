@@ -1,4 +1,4 @@
-# CB100 — Clases de la semana 02
+# CB100 — Clases de la semana 03
 
 TDA Y POO
 
