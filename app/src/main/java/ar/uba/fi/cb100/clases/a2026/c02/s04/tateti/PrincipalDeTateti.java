@@ -1,5 +1,7 @@
 package ar.uba.fi.cb100.clases.a2026.c02.s04.tateti;
 
+import ar.uba.fi.cb100.clases.a2026.c02.s04.ExcepcionDeRegistro;
+
 /**
  * Programa de prueba del tateti. Recorre <b>todos</b> los métodos públicos
  * de {@link Tateti} en cuatro partidas: una que gana X, una que termina en
@@ -145,5 +147,9 @@ public class PrincipalDeTateti {
         System.out.println("=".repeat(64));
         System.out.println("  " + texto);
         System.out.println("=".repeat(64));
+    }
+
+    private void testExcepcion() {
+        throw new ExcepcionDeRegistro("Esto es un error de prueba", 10);
     }
 }
