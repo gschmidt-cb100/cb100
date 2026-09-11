@@ -41,6 +41,13 @@ dependencies {
     runtimeOnly 'org.apache.logging.log4j:log4j-to-slf4j:2.24.3'
     runtimeOnly 'org.slf4j:slf4j-nop:2.0.16'
 
+    // Decodificador MP3 para javax.sound. La usa
+    // ar.uba.fi.cb100.librerias.sonido.ReproductorDeSonido.
+    // Es un "service provider": javax.sound lo descubre solo en tiempo de
+    // ejecución, por eso runtimeOnly y no implementation. Sin esta línea los
+    // WAV siguen funcionando; los MP3 fallan con "formato no soportado".
+    runtimeOnly 'com.googlecode.soundlibs:mp3spi:1.9.5.4'
+
     // JUnit 5: el framework para escribir pruebas unitarias.
     testImplementation platform('org.junit:junit-bom:5.11.3')
     testImplementation 'org.junit.jupiter:junit-jupiter'

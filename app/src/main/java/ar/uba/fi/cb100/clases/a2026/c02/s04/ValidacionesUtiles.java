@@ -29,6 +29,12 @@ public class ValidacionesUtiles {
         return " de " + temp.trim();
     }
 
+    public static void validarDistintoDeNull(Object o, String... nombreVariable) {
+        if (o == null) {
+            throw new IllegalArgumentException("El TDA " + toString(nombreVariable) + " debe ser distinto de null");
+        }
+    }
+
     public static void validarRango(int numero, int rangoInferior, int rangoSuperior, String... nombreVariable) {
         if (numero < rangoInferior ||
             numero > rangoSuperior) {
