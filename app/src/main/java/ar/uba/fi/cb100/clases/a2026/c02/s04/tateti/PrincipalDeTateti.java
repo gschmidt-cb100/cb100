@@ -150,6 +150,6 @@ public class PrincipalDeTateti {
     }
 
     private void testExcepcion() {
-        throw new ExcepcionDeRegistro("Esto es un error de prueba", 10);
+        throw new ExcepcionDeRegistro("Esto es un error de prueba", 10, null);
     }
 }
