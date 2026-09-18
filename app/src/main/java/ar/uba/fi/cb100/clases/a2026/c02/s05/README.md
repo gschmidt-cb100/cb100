@@ -6,7 +6,7 @@ Terminamos Complejidad algoritmica.
 
 Video del miercoles 16/09: https://youtu.be/xx9H_Sv5c5Q
 
-Video del jueves 17/09: 
+Video del jueves 17/09: https://youtu.be/44QOy5oqf7Q
 
 Tarea
 Terminar la guia 3, 
