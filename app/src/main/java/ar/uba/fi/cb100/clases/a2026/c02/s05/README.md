@@ -10,8 +10,10 @@ Video del jueves 17/09:
 
 Tarea
 Terminar la guia 3, 
+Empezar la guia 4. Entregar el ejercicio 8 de los dificiles por mail.
 Hacer 2 parciales de TDA,
 Armar el grupo para el TP2.
+
 
 
 Preguntas:
