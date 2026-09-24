@@ -150,7 +150,7 @@ que **ustedes hacen crecer a mano**:
   permitido);
 - `cantidad()` es la cantidad de elementos **usados**, no la capacidad.
 
-> Este es el corazón del TP. Es, en chiquito, el `VectorDinamico` que vamos a ver
+> Este es el corazón del TP. Es, en chiquito, el vector dinámico que explica la teoría
 > en `i05_lineales`. Si lo resuelven con `ArrayList`, el TP no cumple su objetivo.
 
 ### Parte C — Lectura del archivo

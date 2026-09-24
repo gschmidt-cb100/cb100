@@ -17,7 +17,7 @@ import java.util.TreeSet;
 public class DemoApiNativa {
 
     public static void main(String[] args) {
-        // --- Lista sobre arreglo dinámico: ArrayList (nuestro VectorDinamico) ---
+        // --- Lista sobre arreglo dinámico: ArrayList (nuestro TDA Vector propio (guía difícil e01)) ---
         List<String> arrayList = new ArrayList<>();
         arrayList.add("a"); arrayList.add("b"); arrayList.add("c");
         arrayList.add(1, "X");                 // insertar en posición

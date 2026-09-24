@@ -43,9 +43,9 @@ class ListaTest {
     }
 
     @Test
-    @DisplayName("VectorDinamico cumple el contrato de Lista")
-    void vectorDinamico() {
-        verificarComportamiento(new VectorDinamico<>());
+    @DisplayName("ListaSobreArrayList cumple el contrato de Lista")
+    void listaSobreArrayList() {
+        verificarComportamiento(new ListaSobreArrayList<>());
     }
 
     @Test
@@ -57,7 +57,7 @@ class ListaTest {
     @Test
     @DisplayName("Ambas implementaciones producen el mismo resultado paso a paso")
     void ambasSeComportanIgual() {
-        Lista<String> vector = new VectorDinamico<>();
+        Lista<String> vector = new ListaSobreArrayList<>();
         Lista<String> enlazada = new ListaEnlazada<>();
 
         String[] aInsertar = {"a", "b", "c", "d", "e"};
@@ -80,7 +80,7 @@ class ListaTest {
     @Test
     @DisplayName("Ambas lanzan excepcion ante indices invalidos")
     void ambasValidanIndices() {
-        Lista<Integer> vector = new VectorDinamico<>();
+        Lista<Integer> vector = new ListaSobreArrayList<>();
         Lista<Integer> enlazada = new ListaEnlazada<>();
         vector.agregar(1);
         enlazada.agregar(1);
