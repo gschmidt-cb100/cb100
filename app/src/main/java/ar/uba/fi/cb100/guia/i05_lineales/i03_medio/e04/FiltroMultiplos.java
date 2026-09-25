@@ -24,6 +24,13 @@ public final class FiltroMultiplos {
         List<Integer> copia = new ArrayList<>(l);
         // removeIf recorre y elimina los que cumplen el predicado.
         copia.removeIf(x -> x % 3 == 0);
+
+        // Alternativamente, se podría usar un bucle for-each, pero no es recomendable
+//        for(Integer x : copia) {
+//            if (x % 3 == 0) {
+//                copia.remove(x);
+//            }
+//        }
         return copia;
     }
 }

@@ -1,5 +1,7 @@
 package ar.uba.fi.cb100.guia.i05_lineales.i02_facil.e02;
 
+import org.apache.poi.ss.formula.functions.T;
+
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -22,12 +24,12 @@ public final class SinDuplicados {
      */
     public static List<Integer> sinDuplicados(List<Integer> l) {
         // LinkedHashSet descarta repetidos y conserva el orden de insercion.
-        LinkedHashSet<Integer> conjunto = new LinkedHashSet<>(l);
-        return new ArrayList<>(conjunto);
+        return new ArrayList<>(new LinkedHashSet<>(l));
     }
 
     public static void main(String[] args) {
         List<Integer> original = List.of(3, 1, 3, 2, 1, 5);
+        Integer[] valores = {1, 2, 3, 4, 5};
         System.out.println("Original:       " + original);
         System.out.println("Sin duplicados: " + sinDuplicados(original));
     }

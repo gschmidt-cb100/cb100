@@ -36,6 +36,32 @@ public class RecorridosDeEstructuras {
     private static final int N = 40_000;
 
     public static void main(String[] args) {
+        ArrayList<String> vector = new ArrayList<>();
+        vector.add("a");
+        vector.add("b");
+        vector.add("c");
+        vector.add("d");
+        vector.add("e");
+
+        //Recorrido 1
+        for(int i = 0; i < vector.size(); i++){
+            System.out.println(vector.get(i) + " en posición " + i);
+        }
+
+        //Recorrido 2: for each
+        for(String letra : vector){
+            System.out.println(letra + " en posición " + vector.indexOf(letra));
+        }
+
+        //Recorrido 3: Iterator
+        Iterator<String> it = vector.iterator();
+        while(it.hasNext()){
+            String letra = it.next();
+            System.out.println(letra + " en posición " + vector.indexOf(letra));
+        }
+
+
+
         System.out.println("================ 1. INSERTAR ================");
         insertar(new ArrayList<>(), "ArrayList ");
         insertar(new LinkedList<>(), "LinkedList");
@@ -46,6 +72,11 @@ public class RecorridosDeEstructuras {
         List<String> letras = List.of("a", "b", "c", "d", "e");
         recorrer(new ArrayList<>(letras), "ArrayList");
         recorrer(new LinkedList<>(letras), "LinkedList");
+
+        System.out.println();
+        System.out.println("================ 2b. INSERTAR ORDENADO CON ListIterator ================");
+        insertarOrdenadoDemo(new ArrayList<>(List.of("ana", "carla", "elena", "gaston")), "ArrayList ");
+        insertarOrdenadoDemo(new LinkedList<>(List.of("ana", "carla", "elena", "gaston")), "LinkedList");
 
         System.out.println();
         System.out.println("================ 3. LO QUE NO SE PUEDE ================");
@@ -138,6 +169,56 @@ public class RecorridosDeEstructuras {
             System.out.print(li.previous() + " ");
         }
         System.out.println("(índice " + li.nextIndex() + ")");
+    }
+
+    // ------------------------------------------------------------------
+    // 2b. Recorrer con ListIterator e insertar en orden
+    // ------------------------------------------------------------------
+
+    /**
+     * Inserta {@code x} en una lista YA ordenada, en el lugar que le corresponde,
+     * recorriendo con un ListIterator. La lista sigue ordenada después.
+     *
+     * <p>La idea: avanzar mientras lo que viene sea menor que {@code x}. Cuando
+     * aparece el primero que es mayor o igual, ya nos pasamos UN lugar, así que
+     * retrocedemos con {@code previous()} y ahí insertamos con {@code add()}.
+     * Si nunca aparece uno mayor, el cursor quedó al final y {@code add()}
+     * agrega al final: también es correcto.
+     *
+     * <pre>
+     *   lista:  [ana] [carla] [elena] [gaston]      x = "diego"
+     *            ^ next()="ana"   &lt; diego, sigo
+     *                  ^ next()="carla"  &lt; diego, sigo
+     *                          ^ next()="elena"  &gt;= diego: me pasé
+     *                  previous()  <- vuelvo un lugar (el cursor queda ANTES de "elena")
+     *                  add("diego")            -> [ana, carla, diego, elena, gaston]
+     * </pre>
+     *
+     * <p>Cuesta O(n) por el recorrido, y NO usa get(i): en LinkedList también
+     * es O(n), no O(n²). Eso es lo que no se puede hacer con un for con índice.
+     */
+    static void insertarOrdenado(List<String> lista, String x) {
+        ListIterator<String> it = lista.listIterator();
+        while (it.hasNext()) {
+            String actual = it.next();
+            if (actual.compareTo(x) >= 0) {   // encontré el primero que va DESPUÉS de x
+                it.previous();                // vuelvo: el cursor queda antes de "actual"
+                break;
+            }
+        }
+        it.add(x);                            // inserta en la posición del cursor
+    }
+
+    static void insertarOrdenadoDemo(List<String> lista, String nombre) {
+        System.out.println(nombre + " inicial:            " + lista);
+        insertarOrdenado(lista, "diego");
+        System.out.println(nombre + " + \"diego\" (medio):   " + lista);
+        insertarOrdenado(lista, "abel");
+        System.out.println(nombre + " + \"abel\" (principio): " + lista);
+        insertarOrdenado(lista, "zoe");
+        System.out.println(nombre + " + \"zoe\" (final):      " + lista);
+        insertarOrdenado(lista, "carla");
+        System.out.println(nombre + " + \"carla\" (repetido): " + lista + "   <- queda antes de la que ya estaba");
     }
 
     // ------------------------------------------------------------------
