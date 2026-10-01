@@ -10,7 +10,7 @@ Video del jueves 24/09: https://youtu.be/_Eheamos8cM
 
 Tarea
 Terminar la guia 4 y 5 
-Pensar el parcial de Proyecto y programador.
+Pensar el parcial de Ingeniero de Software. 21/05/2026
 Avanzar con el TP 2.
 
 
