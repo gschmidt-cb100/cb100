@@ -8,7 +8,7 @@ import java.util.Objects;
  * Acumula todas las entregas asociadas a un repartidor y permite consultar
  * métricas como kilómetros totales y entregas en reparto.
  */
-public class EstadisticaRepartidor {
+public class EstadisticaDeRepartidor {
 //ATRIBUTOS
     private final Repartidor repartidor;
     private final List<Entrega> entregas;
@@ -20,7 +20,7 @@ public class EstadisticaRepartidor {
      *
      * @param repartidor repartidor sobre el que se acumulan las entregas
      */
-    public EstadisticaRepartidor(Repartidor repartidor){
+    public EstadisticaDeRepartidor(Repartidor repartidor){
         this.repartidor = repartidor;
         this.entregas = new ArrayList<>();
     }
@@ -30,7 +30,7 @@ public class EstadisticaRepartidor {
      *
      * @param entrega entrega con la que se inicia la estadística
      */
-    public EstadisticaRepartidor(Entrega entrega) {
+    public EstadisticaDeRepartidor(Entrega entrega) {
         this(entrega.getRepartidor());
         this.getEntregas().add(entrega);
     }

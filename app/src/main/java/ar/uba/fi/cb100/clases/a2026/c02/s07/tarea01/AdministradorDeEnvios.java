@@ -1,5 +1,7 @@
 package ar.uba.fi.cb100.clases.a2026.c02.s07.tarea01;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Administra y consolida la información de entregas por repartidor.
@@ -12,8 +14,9 @@ public class AdministradorDeEnvios {
      * @param entregas listado de entregas a procesar
      * @return estadísticas consolidadas por repartidor
      */
-    public List<EstadisticaRepartidor> cargarEstadisticas(List<Entrega> entregas){
-        List<EstadisticaRepartidor> estadisticas = new ArrayList<>();
+    public List<EstadisticaDeRepartidor> getEstadisticasDeRepartidor(List<Entrega> entregas) {
+        //Validaciones
+        List<EstadisticaDeRepartidor> estadisticas = new ArrayList<>();
         for (Entrega entrega: entregas){
             agregarEstadisticaDeEntrega(estadisticas, entrega);
         }
@@ -28,8 +31,9 @@ public class AdministradorDeEnvios {
      * @param estadisticas lista de estadísticas acumuladas
      * @param entrega entrega a registrar
      */
-    public void agregarEstadisticaDeEntrega(List<EstadisticaRepartidor> estadisticas, Entrega entrega){
-        EstadisticaRepartidor comparador = new EstadisticaRepartidor(entrega);
+    public void agregarEstadisticaDeEntrega(List<EstadisticaDeRepartidor> estadisticas, Entrega entrega) {
+        //Validaciones
+        EstadisticaDeRepartidor comparador = new EstadisticaDeRepartidor(entrega);
         if (estadisticas.contains(comparador)){
             estadisticas.get(estadisticas.indexOf(comparador)).getEntregas().add(entrega);
         } else {
@@ -46,9 +50,9 @@ public class AdministradorDeEnvios {
      * @return lista de repartidores calificados en orden decreciente por km
      */
     public List<Repartidor> buscarMejoresRepartidores(List<Entrega> entregas, int cantidaMaximaDeEntregasEnReparto){
-        List<EstadisticaRepartidor> estadisticasRepartidores = cargarEstadisticas(entregas);
-        List<EstadisticaRepartidor> repartidoresMasCalificados = new ArrayList<>();
-        for (EstadisticaRepartidor estadistica : estadisticasRepartidores){
+        List<EstadisticaDeRepartidor> estadisticasRepartidores = getEstadisticasDeRepartidor(entregas);
+        List<EstadisticaDeRepartidor> repartidoresMasCalificados = new ArrayList<>();
+        for (EstadisticaDeRepartidor estadistica : estadisticasRepartidores){
             if (estadistica.getCantidadDeEntregasEnReparto() <= cantidaMaximaDeEntregasEnReparto){
                 repartidoresMasCalificados.add(estadistica);
             }
@@ -60,11 +64,5 @@ public class AdministradorDeEnvios {
             resultado.add(repartidoresMasCalificados.get(i).getRepartidor());
         }
         return resultado;
-        
-
-        
     }
-
-
-
 }
