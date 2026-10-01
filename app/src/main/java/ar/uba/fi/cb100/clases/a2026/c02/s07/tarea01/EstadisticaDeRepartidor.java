@@ -82,7 +82,7 @@ public class EstadisticaDeRepartidor {
     @Override 
     public boolean equals(Object o){
         if (o == null || getClass() != o.getClass()) return false;
-        EstadisticaRepartidor estadistica = (EstadisticaRepartidor) o;
+        EstadisticaDeRepartidor estadistica = (EstadisticaDeRepartidor) o;
         return Objects.equals(this.repartidor, estadistica.repartidor);
     }
 
