@@ -3,9 +3,9 @@
 Ejercicios de Listas
 
 
-Video del miercoles 30/09: 
+Video del miercoles 30/09: https://youtu.be/XFs_NRrozL0
 
-Video del jueves 01/10: 
+Video del jueves 01/10: https://youtu.be/4kRqdbhv3DI
 
 Tarea
 Terminar la guia 4, 5 y 6 
@@ -16,3 +16,4 @@ Avanzar con el TP 2.
 Preguntas:
 Hacer el checklist de listas.
 Mejorar el ejemplo del bucket sort.
+Agregar un ejemplo de recursividad anidada, indirecta y multiple 
