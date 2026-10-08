@@ -1,4 +1,4 @@
-# CB100 — Clases de la semana 05
+# CB100 — Clases de la semana 06
 
 Complejidad algoritmica y TP 2
 

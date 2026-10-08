@@ -1,4 +1,4 @@
-# CB100 — Clases de la semana 05
+# CB100 — Clases de la semana 07
 
 Ejercicios de Listas
 
