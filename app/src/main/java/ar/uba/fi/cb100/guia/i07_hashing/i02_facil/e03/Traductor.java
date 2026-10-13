@@ -38,6 +38,6 @@ public final class Traductor {
                 "hola", "hello",
                 "mundo", "world",
                 "chau", "bye");
-        System.out.println(traducir("hola mundo cruel", dic));
+        System.out.println(traducir("hola mundo cruel", dic));  // imprime "hello world cruel"
     }
 }
