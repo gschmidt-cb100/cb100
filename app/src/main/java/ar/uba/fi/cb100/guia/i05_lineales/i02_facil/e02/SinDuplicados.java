@@ -1,7 +1,5 @@
 package ar.uba.fi.cb100.guia.i05_lineales.i02_facil.e02;
 
-import org.apache.poi.ss.formula.functions.T;
-
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
