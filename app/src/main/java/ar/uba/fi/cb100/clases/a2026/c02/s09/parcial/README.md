@@ -13,3 +13,4 @@ Avanzar con el TP 2.
 Aclaraciones:
 La fecha del parcial es Miercoles 28/10 a las 19hs 
 Agregar la logica del arbol B y B+ al pdf de teoria.
+Agregar definicion de arbol completo y lleno.
