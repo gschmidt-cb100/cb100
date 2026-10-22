@@ -1,8 +1,22 @@
-# CB100 — Código de clase
+# FI UBA — CB100 Algoritmos y Estructuras de Datos
 
 Repositorio con **todo el código que se explica en las clases** de la materia
 Algoritmos y Estructuras de Datos (CB100, UBA). Proyecto en **Java 25** con
 **Gradle** y **Git**, pensado para abrirse con **IntelliJ IDEA**.
+
+## Datos útiles de la cátedra
+
+| | |
+|---|---|
+| **Meet de todas las clases** | <https://meet.google.com/yta-tksg-zzr> |
+| **Canal de YouTube** | <https://www.youtube.com/channel/UCoX2PLLQxmPR7Z8OFB9ti5g/videos> |
+| **GitHub** | <https://github.com/gschmidt-cb100/cb100> |
+| **Mail** | Gustavo Schmidt: <gschmid@fi.uba.ar> |
+
+**Horarios**
+
+- **Teórica:** miércoles de 19 a 22 hs.
+- **Práctica:** jueves de 19 a 22 hs.
 
 ## Requisitos
 
@@ -16,7 +30,7 @@ No hace falta instalar Gradle: el proyecto trae el *Gradle Wrapper*
 ## Cómo empezar
 
 ```bash
-git clone <URL-del-repo>
+git clone https://github.com/gschmidt-cb100/cb100.git
 cd cb100
 ./gradlew run        # en Windows:  gradlew.bat run
 ```
