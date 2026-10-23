@@ -15,6 +15,32 @@ public class ValidacionesUtiles {
     }
 
     /**
+     * Valida que el número real sea mayor que cero (versión para double: longitudes, toneladas, importes).
+     * @param numero: el número a validar
+     * @param textos: los textos que se incluirán en el mensaje de la excepción si el número no es mayor que cero
+     * @throws IllegalArgumentException si el número no es mayor que cero
+     */
+    public static void esMayorQueCero(double numero, String... textos) {
+        if (numero <= 0) {
+            throw new IllegalArgumentException("El número " + toString(textos) + " debe ser mayor que cero.");
+        }
+    }
+
+    /**
+     * Valida una condición de ESTADO del TDA: si el valor es verdadero, lanza IllegalStateException con el
+     * mensaje. Se usa cuando la operación es válida en sí, pero el objeto no está en el estado que la admite
+     * (el tren está completo, el vagón no está vacío, la tostadora está apagada).
+     * @param valor: el valor booleano a validar
+     * @param texto: el mensaje de la excepción si el valor es verdadero
+     * @throws IllegalStateException si el valor es verdadero
+     */
+    public static void validarEstadoFalso(boolean valor, String texto) {
+        if (valor) {
+            throw new IllegalStateException(texto);
+        }
+    }
+
+    /**
      * Convierte un arreglo de textos en una cadena de texto separada por espacios.
      * @param textos: los textos a convertir
      * @return una cadena de texto que contiene los textos separados por espacios, precedida por " de "
