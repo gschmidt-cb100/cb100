@@ -1,4 +1,4 @@
-# CB100 — Clases de la semana 10
+# CB100 — Clases de la semana 12
 
 Vimos ejercicios de repaso del parcial TDA Tren
 Vimos ejercicios de complejidad de algoritmos
