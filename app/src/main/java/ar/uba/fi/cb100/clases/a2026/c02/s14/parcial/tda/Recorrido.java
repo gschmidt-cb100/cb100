@@ -42,8 +42,6 @@ import ar.uba.fi.cb100.clases.a2026.c02.s04.ValidacionesUtiles;
 public class Recorrido {
 //ATRIBUTOS DE CLASE --------------------------------------------------------------------------------------
 
-    private static final int CAPACIDAD_INICIAL = 10;
-
 //ATRIBUTOS -----------------------------------------------------------------------------------------------
 
     private final String nombre;
@@ -57,11 +55,11 @@ public class Recorrido {
      * post: crea el recorrido sin paradas. Si no se cumple la pre, lanza
      *       {@link IllegalArgumentException}.
      */
-    public Recorrido(String nombre) {
+    public Recorrido(String nombre, int cantidadMaximaDeParadas) {
         ValidacionesUtiles.validarDistintoDeNull(nombre, "nombre");
         ValidacionesUtiles.validarFalso(nombre.isBlank(), "El nombre del recorrido no puede estar vacío.");
         this.nombre = nombre.trim();
-        this.paradas = new Parada[CAPACIDAD_INICIAL];
+        this.paradas = new Parada[cantidadMaximaDeParadas];
         this.cantidadDeParadas = 0;
     }
 
