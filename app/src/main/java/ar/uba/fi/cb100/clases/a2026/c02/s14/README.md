@@ -22,4 +22,4 @@ Terminar todas las guías de la materia.
 
 
 Preguntas:
-El recuperatorio (tercera oportunidad) es miércoles 25/11 a las 19hs presencial. Aula a confirmar.
+El recuperatorio (tercera oportunidad) es jueves 26/11 a las 19hs presencial. Aula a confirmar.
