@@ -17,7 +17,7 @@ class RecorridoTest {
 
     /** Retiro (0 km) - Obelisco (2,5) - Once (6,5): 22 minutos. */
     private static Recorrido recorridoDeEjemplo() {
-        Recorrido recorrido = new Recorrido("Línea 1");
+        Recorrido recorrido = new Recorrido("Línea 1", 10);
         recorrido.agregarParada(RETIRO);
         recorrido.agregarParada(OBELISCO);
         recorrido.agregarParada(ONCE);
@@ -45,7 +45,7 @@ class RecorridoTest {
     @Test
     @DisplayName("un recorrido nace vacío: sin distancia, sin duración y sin parada más lejana")
     void recorridoVacio() {
-        Recorrido recorrido = new Recorrido("Vacío");
+        Recorrido recorrido = new Recorrido("Vacío", 10);
         assertTrue(recorrido.estaVacio());
         assertEquals(0, recorrido.getCantidadDeParadas());
         assertEquals(0, recorrido.obtenerDuracionTotal());
@@ -98,7 +98,7 @@ class RecorridoTest {
     @Test
     @DisplayName("el vector crece: se pueden cargar más paradas que la capacidad inicial")
     void crece() {
-        Recorrido recorrido = new Recorrido("Largo");
+        Recorrido recorrido = new Recorrido("Largo", 10);
         for (int i = 1; i <= 50; i++) {
             recorrido.agregarParada(new Parada("Parada " + i, "Calle " + i, i, 2));
         }
@@ -150,7 +150,7 @@ class RecorridoTest {
     @DisplayName("paradas en común entre dos recorridos")
     void enComun() {
         Recorrido uno = recorridoDeEjemplo();
-        Recorrido otro = new Recorrido("Línea 2");
+        Recorrido otro = new Recorrido("Línea 2", 10);
         otro.agregarParada(new Parada("Once", "Av. Pueyrredón 100", 0, 0));
         otro.agregarParada(new Parada("Abasto", "Av. Corrientes 3200", 1.5, 6));
         otro.agregarParada(new Parada("Obelisco", "Av. Corrientes 1000", 5, 15));
@@ -166,7 +166,7 @@ class RecorridoTest {
     @DisplayName("recorridos sin paradas en común, o vacíos")
     void sinParadasEnComun() {
         Recorrido uno = recorridoDeEjemplo();
-        Recorrido otro = new Recorrido("Línea 3");
+        Recorrido otro = new Recorrido("Línea 3", 10);
         assertFalse(uno.tieneParadaEnComun(otro));
         otro.agregarParada(CONGRESO);
         assertFalse(uno.tieneParadaEnComun(otro));
