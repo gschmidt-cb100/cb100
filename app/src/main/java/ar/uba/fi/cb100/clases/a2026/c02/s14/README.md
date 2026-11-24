@@ -12,9 +12,9 @@ Vimos un ejercicio integrador que usa todos los temas de la materia (`integrador
 - La solución, cómo ejecutarla y qué mirar: [README.md](integrador/README.md).
 
 
-Video del miércoles 18/11:
+Video del miércoles 18/11: https://youtu.be/lRX075CSqac
 
-Video del jueves 19/11:
+Video del jueves 19/11: https://youtu.be/zAJgIR7eRJw
 
 Tarea
 Terminar el TP 2.
